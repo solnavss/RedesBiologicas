@@ -1,39 +1,11 @@
-Taller: Análisis de redes biológicas
-================
-Marisol Navarro-Miranda
-28/10/22
-
-**Análisis de redes biológicas**
-
-# Temas
-
-1 Descripción de la red
-
-* V (nodos)
-* E (aristas)
-* Grado
-* Caminos
-* Componentes conexas
-* Camino más corto
-* Diámetro
-* Densidad
-* Distribución de grado
-* Centrality (Degree y Betweenness)
-* Coeficiente de clustering
-
-2 Estudio de caso
-
-# 1. Descripción de la red
-
-**R** 
-
-``` r
 #----------------------------------------------------------------------
 # Marisol Navarro Miranda
 # Cinvestav Irapuato
 # Creacion: oct 2022
 # Ultima modificacion: oct 2022
 #----------------------------------------------------------------------
+
+setwd("/Users/solouli/Desktop/")
 
 library(igraph)         # Biblioteca para análisis de redes.
 library(tidyverse)      # Colección de bibliotecas para manipulación de datos.
@@ -93,12 +65,7 @@ betweenness(g)
 
 # 11) Coeficiente de clustering | Clustering coefficient
 transitivity(g)
-```
-# 2. Estudio de caso
 
-**R** 
-
-``` r
 #----------------------------------------------------------------------
 # OscarFontanelli
 # RMB
@@ -242,16 +209,12 @@ plot(g,
 
 # Primero creamos una tabla con los nodos y su comunidad.
 membership.frame <- tibble(name=V(g)$name,community=V(g)$community)
-
 # Peso de las aristas entre nodos de la misma comunidad.
 edge.weight <- 50
-
 # Lista de aristas.
 edge.list <- get.edgelist(g)
-
 # Un vector vacío para ir guardando los pesos.
 weights <- c()
-
 # Si los dos nodos de una aristas pertenecen a la comunidad,
 # asignar el peso edge.weight. De lo contrario, asignar un peso de 1.
 # Iterar sobre todas las aristas.
@@ -300,29 +263,3 @@ plot(g,
 
 # Guardamos la red en formato graphml para su uso futuro.
 write.graph(g,"D:/Bio/yeast_protein_interaction.graphml", format="graphml")
-```
-
-# Referencias
-
-* Recursos
-
-https://igraph.org/r/html/latest/
-http://networksciencebook.com/chapter/1
-
-https://kateto.net/2016/05/network-datasets/
-https://kateto.net/wp-content/uploads/2016/01/NetSciX_2016_Workshop.pdf
-https://github.com/elaragon/R-igraph-Network-Workshop/blob/master/NetSciX%202016%20Workshop.R
-
-* Bases de Datos
-
-https://snap.stanford.edu/data/
-https://networkrepository.com/
-https://icon.colorado.edu/#!/networks
-
-* Crea un dataset
-
-https://www.genecards.org/
-https://string-db.org/cgi/input?sessionId=bvevnhF1MzII&input_page_show_search=on
-
-
-
